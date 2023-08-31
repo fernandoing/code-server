@@ -1,0 +1,22 @@
+---
+version: "2.1"
+services:
+  code-server:
+    #image: lscr.io/linuxserver/code-server:latest
+    image: code-server:bad
+    container_name: code-server
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - PROXY_DOMAIN=code-server.my.domain #optional
+      - DEFAULT_WORKSPACE=/config/workspace #optional
+        #- SUDO_PASSWORD=password #optional
+        #- SUDO_PASSWORD_HASH= #optional
+        #- PASSWORD=password #optional
+        #- HASHED_PASSWORD= #optional
+    volumes:
+      - /home/ztrikerx21/code-server/config:/config
+    ports:
+      - 8443:8443
+    restart: unless-stopped
