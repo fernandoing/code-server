@@ -1,7 +1,7 @@
 FROM linuxserver/code-server:4.16.1
 
 # Install packages
-RUN apt update && apt install -y build-essential vim zsh python3 python3-pip python3.10-venv unzip
+RUN apt update && apt install -y build-essential vim zsh python3 python3-pip python3.10-venv unzip tcpdump dnsutils telnet iputils-ping
 #sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Install aws cli
@@ -22,7 +22,7 @@ RUN /home/linuxbrew/.linuxbrew/bin/brew install gcc ruby brew-gem
 #RUN /home/linuxbrew/.linuxbrew/bin/brew gem install cfn-nag
 
 # Install python modules
-RUN pip3 install cfn-lint virtualenv
+RUN pip3 install cfn-lint virtualenv boto3
 
 # Install pulumi
 RUN curl -fsSL https://get.pulumi.com | sh
